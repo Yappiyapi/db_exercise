@@ -1,0 +1,136 @@
+1. データベースへ接続
+
+```bash
+[db] $
+```$mysql -u root -p
+
+
+2. データベース作成
+
+```sql
+mysql>create database camp;
+```
+
+
+3. データベースの選択
+
+```sql
+mysql>use camp;
+```
+
+
+4-1. itemsテーブルの作成
+
+```sql
+mysql> create table items (
+    -> id int NOT NULL AUTO_INCREMENT,
+    -> name varchar(31),
+    -> price int,
+    -> category_id int,
+    -> description varchar(1002),
+    -> PRIMARY KEY (id),
+    -> INDEX category_id_index(category_id)
+    -> );
+```
+
+
+4-2. itemsテーブルの構造を確認
+
+```sql
+mysql>desc items;
+```
+
+
+4-3. categoriesテーブルの作成
+
+```sql
+mysql>create table categories (
+    -> id int auto_increment,
+    -> name varchar(255),
+    -> primary key (id)
+    -> );
+```
+
+
+4-4. categoriesテーブルの構造を確認
+
+```sql
+mysql>desc categories;
+```
+
+
+5-1. 条件: price
+
+```sql
+mysql>SELECT * FROM items WHERE price <= 7300;
+```
+
+
+5-2. 抽出項目: name、price
+
+```sql
+mysql>SELECT id, name FROM items;
+```
+
+
+5-3. 並び替え: price
+
+```sql
+mysql>select * from items order by price desc;
+```
+
+
+5-4. 平均: price
+
+```sql
+mysql>SELECT AVG(price) FROM items;
+```
+
+
+5-5. あいまい検索
+
+```sql
+mysql>SELECT * FROM items WHERE description LIKE '%詰合せ%';
+```
+
+
+5-6. 結合
+
+```sql
+mysql>SELECT * FROM items inner JOIN categories ON price < 7000 = categories.name;
+```
+
+
+6-1. 価格
+
+```sql
+mysql>
+```
+
+
+7-1. 価格
+
+```sql
+mysql>
+```
+
+
+8-1. items
+
+```sql
+mysql>
+```
+
+
+8-2. categories
+
+```sql
+mysql>
+```
+
+
+9. データベースの削除
+
+```sql
+mysql>
+```
