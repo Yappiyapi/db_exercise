@@ -24,10 +24,10 @@ mysql>use camp;
 ```sql
 mysql> create table items (
     -> id int NOT NULL AUTO_INCREMENT,
-    -> name varchar(31),
-    -> price int,
-    -> category_id int,
-    -> description varchar(1002),
+    -> name varchar(31) NOT NULL,
+    -> price int NOT NULL,
+    -> category_id int NOT NULL,
+    -> description varchar(1002) NOT NULL,
     -> PRIMARY KEY (id),
     -> INDEX category_id_index(category_id)
     -> );
@@ -69,7 +69,7 @@ mysql>SELECT * FROM items WHERE price <= 7300;
 5-2. 抽出項目: name、price
 
 ```sql
-mysql>SELECT id, name FROM items;
+mysql>SELECT name, price FROM items;
 ```
 
 
@@ -97,40 +97,40 @@ mysql>SELECT * FROM items WHERE description LIKE '%詰合せ%';
 5-6. 結合
 
 ```sql
-mysql>SELECT * FROM items inner JOIN categories ON price < 7000 = categories.name;
+mysql>select * from categories inner JOIN items ON price > 6999 = categories.name;
 ```
 
 
 6-1. 価格
 
 ```sql
-mysql>
+mysql>update itmes set price=price+500 where price > 6999;
 ```
 
 
 7-1. 価格
 
 ```sql
-mysql>
+mysql>delete from itmes where price < 3999;
 ```
 
 
 8-1. items
 
 ```sql
-mysql>
+mysql>drop from itmes;
 ```
 
 
 8-2. categories
 
 ```sql
-mysql>
+mysql>drop from categories;
 ```
 
 
 9. データベースの削除
 
 ```sql
-mysql>
+mysql>drop database camp;
 ```
